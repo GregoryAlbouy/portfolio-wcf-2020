@@ -90,41 +90,6 @@ abstract class BaseComponent extends HTMLElement
         return (window.getComputedStyle(this) as any)[name]
     }
 
-    /**
-     * TODO:
-     * - the whole method
-     * - into(): same (or similar to) EBuilder().into()
-     * - implement a parser to replace [[someReference]] with data.someReference in html
-     */
-    // useTemplate(templateRef: HTMLTemplateElement) {
-
-    //     function fill(data: AnyObject) {
-    //         const matches = []
-
-    //         function scan(parentElement: Element) {
-    //             parentElement.childNodes.forEach((node) => {
-    //                 if (!(node instanceof Element)) return
-    //             })
-    //         }
-
-    //         scan(this.templateRef)
-
-    //         return { into }
-    //     }
-
-    //     function into(target: Element) {
-    //         const element = this.template.content.cloneNode(true)
-
-    //         target.appendChild(element)
-    //     }
-
-    //     function each() {
-
-    //     }
-
-    //     return { template, fill, into, each }
-    // }
-
     render() {
         const rawTemplate = (this.constructor as self).TEMPLATE_STR
         const processedTemplate = handlebars.compile(rawTemplate, { noEscape: true })(this.props)

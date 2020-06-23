@@ -1,18 +1,18 @@
-// @ts-nocheck
 import handlebars from 'handlebars'
 import Build from 'ebuilder-js'
 
-// type self = typeof BaseComponent
+type self = typeof BaseComponent
 
 abstract class BaseComponent extends HTMLElement
 {
     static TEMPLATE_STR = ''
+
     root: ShadowRoot | HTMLElement
     htmlContent: string
+
     props: ComponentProps = {}
     ;[ref: string]: any
-    // refs: ComponentRefs = {}
-    ParseRequestMatches = []
+
 
     constructor(isShadow = false) {
         super()

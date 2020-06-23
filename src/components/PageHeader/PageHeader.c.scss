@@ -1,0 +1,16 @@
+:host {
+    display: block;
+    padding: 4rem;
+
+    & > *:not(:last-child) {
+        margin: 0 0 2rem 0;
+    }
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+.subtitle {
+    font-size: 3rem;
+}

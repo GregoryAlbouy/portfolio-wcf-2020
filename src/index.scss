@@ -1,0 +1,40 @@
+@use './assets/style/base';
+@use './assets/style/utils' as u;
+
+:root {
+    --page-background-color: #181822;
+    --text-color: #CCC;
+    --main-color: #0FE;
+    --content-width: 120rem;
+    font-size: 10px;
+}
+
+
+@media (max-width: 1600px) {
+    :root {
+        --content-width: 90rem;
+    }
+}
+
+@media (max-width: 960px) {
+    :root {
+        --content-width: 60rem;
+    }
+}
+
+@media (max-width: 640px) {
+    :root {
+        --content-width: 30rem;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+}
+
+body {
+    background: #181822;
+    color: var(--text-color);
+    font-family: 'Raleway';
+    font-weight: 200;
+}

@@ -1,0 +1,11 @@
+@keyframes breathe {
+    100% { opacity: .6; }
+}
+
+@keyframes rotate-right {
+    100% { transform: rotate(360deg) }
+}
+
+@keyframes rotate-left {
+    100% { transform: rotate(-360deg) }
+}

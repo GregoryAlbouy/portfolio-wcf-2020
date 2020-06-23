@@ -1,0 +1,5 @@
+@mixin absolute-center($n) {
+    position: absolute;
+    top: calc(50% - #{$n / 2});
+    left: calc(50% - #{$n / 2});
+}

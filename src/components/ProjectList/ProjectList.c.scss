@@ -1,0 +1,12 @@
+[data-ref=list] {
+    list-style: none;
+    width: var(--content-width);
+    padding: 4rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto !important;
+
+    li {
+        margin: 1rem;
+    }
+}

@@ -1,0 +1,29 @@
+<article>
+    <div class="img-container">
+        {{#if image}}
+            <img src={{image}} alt={{name}}>
+        {{else}}
+            <span>no illustration</span>
+        {{/if}}
+            <div class="overlay">
+                {{#if demo}}
+                    <a class="demo" href={{demo}} title="{{name}} demo">Try me!</a>
+                {{/if}}
+                {{#if repo}}
+                    <a class="repo" href={{repo}} title="{{name}} repository">View repo</a>
+                {{/if}}
+            </div>
+    </div>
+    
+    <div class="content">
+        <h3>{{name}}</h3>
+        <div class="slider">
+            <p>{{description}}</p>
+            <ul class="tag-list">
+                {{#each tags}}
+                    <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</article>

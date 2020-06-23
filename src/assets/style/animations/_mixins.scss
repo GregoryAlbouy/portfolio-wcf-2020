@@ -1,0 +1,13 @@
+@use 'keyframes';
+
+@function breathe($t, $d: 0s) {
+    @return breathe $t $d alternate infinite both;
+}
+
+@function rotate-right($t) {
+    @return rotate-right $t linear infinite;
+}
+
+@function rotate-left($t) {
+    @return rotate-left $t linear infinite;
+}

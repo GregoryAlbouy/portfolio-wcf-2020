@@ -4,7 +4,7 @@
         "description": "My portfolio, build from scratch using my own Webcomponents framework and EBuilder library!",
         "image": "gregoryalbouy-front-wcf.jpg",
         "tags": [ "Web components", "TypeScript", "Sass", "Webpack", "Creative", "Portfolio" ],
-        "repo": "https://github.com/gregoryalbouy/gregoryalbouy-front-wcf"
+        "repo": "https://github.com/gregoryalbouy/portfolio-wcf-2020"
     },
     {
         "name": "Codemon",
@@ -20,7 +20,7 @@
         "image": "react-dex.jpg",
         "tags": [ "React", "Fetch API", "Sass" ],
         "demo": "https://gregoryalbouy.github.io/react-dex/build/",
-        "repo": "https://github.com/gregoryalbouy/codemon"
+        "repo": "https://github.com/gregoryalbouy/react-dex"
     },
     {
         "name": "Troc des trains",
@@ -63,7 +63,6 @@
         "image": "gameboycolor.jpg",
         "tags": [ "Sass", "3D CSS" ],
         "demo": "https://gregoryalbouy.com/projects/gameboy-color",
-        "repo": "https://github.com/gregoryalbouy/gameboy-color",
         "isDisabled": false
     },
     {

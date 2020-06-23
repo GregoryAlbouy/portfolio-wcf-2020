@@ -1,6 +1,6 @@
 import BaseComponent from './BaseComponent'
 
-abstract class LightComponent extends BaseComponent
+export default abstract class LightComponent extends BaseComponent
 {
     constructor() {
         super()
@@ -14,5 +14,3 @@ abstract class LightComponent extends BaseComponent
         return super.selectAll(query, true)
     }
 }
-
-export default LightComponent

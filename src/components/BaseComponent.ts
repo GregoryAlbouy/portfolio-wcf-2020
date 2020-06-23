@@ -3,7 +3,7 @@ import Build from 'ebuilder-js'
 
 type self = typeof BaseComponent
 
-abstract class BaseComponent extends HTMLElement
+export default abstract class BaseComponent extends HTMLElement
 {
     static TEMPLATE_STR = ''
 
@@ -101,5 +101,3 @@ abstract class BaseComponent extends HTMLElement
         this.dispatchEvent(new CustomEvent('rendered'))
     }
 }
-
-export default BaseComponent

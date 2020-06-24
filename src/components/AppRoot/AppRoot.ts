@@ -1,10 +1,8 @@
-//@ts-nocheck
 import HTML_STR from './AppRoot.c.html'
 import CSS_STR from './AppRoot.c.scss'
 import {
     Component,
-    LightComponent,
-    ShadowComponent
+    LightComponent
 } from '../components'
 
 @Component({

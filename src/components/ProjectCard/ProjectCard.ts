@@ -14,8 +14,7 @@ export default class ProjectCard extends ShadowComponent
         image: '',
         tags: [],
         demo: '',
-        repo: '',
-        data: {}
+        repo: ''
     }
 
     constructor(data: any) {

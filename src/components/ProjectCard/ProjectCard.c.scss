@@ -82,7 +82,7 @@ p {
     background: rgba(0, 0, 0, .8);
 
     a {
-        $color: #EEE;;
+        $color: #EEE;
 
         display: block;
         width: 9rem;
@@ -96,10 +96,6 @@ p {
 
         &:not(:last-child) {
             margin-bottom: 1rem;
-        }
-
-        &:hover {
-            $color: red;
         }
     }
 }

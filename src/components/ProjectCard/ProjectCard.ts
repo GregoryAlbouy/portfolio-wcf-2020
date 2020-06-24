@@ -8,18 +8,32 @@ import { Component, ShadowComponent } from '../components'
 })
 export default class ProjectCard extends ShadowComponent
 {
-    props: ComponentProps = {
+    props = {
+        id: '',
+        slug: '',
         name: '',
         description: '',
         image: '',
         tags: [],
         demo: '',
-        repo: ''
+        repo: '',
+        addedOn: null
     }
 
     constructor(data: any) {
         super()
+        if (data) this.setProps(this.sanitize(data))
+    }
 
-        if (data) this.setProps(data)
+    sanitize(rawData: any): any {
+        const data = Object.create(null)
+
+        Object.keys(rawData).forEach((key) => {
+            if (key === '_id') data['id'] = rawData['_id']
+            if (!(key in this.props)) return
+            data[key] = rawData[key]
+        })
+
+        return data
     }
 }

@@ -1,81 +1,92 @@
 [
     {
         "name": "Portfolio-WCF",
+        "slug": "portfolio-wcf",
         "description": "My portfolio, build from scratch using my own Webcomponents framework and EBuilder library!",
-        "image": "gregoryalbouy-front-wcf.jpg",
+        "image": "https://gregoryalbouy.com/media/images/projects/gregoryalbouy-front-wcf.jpg",
         "tags": [ "Web components", "TypeScript", "Sass", "Webpack", "Creative", "Portfolio" ],
         "repo": "https://github.com/gregoryalbouy/portfolio-wcf-2020"
     },
     {
         "name": "Codemon",
+        "slug": "codemon",
         "description": "Creative experience in JS & Sass (no images!) in which you end up fighting a bug in a Pokemon-like 3D battle. Also inspired by macOS interface.",
-        "image": "codemon.jpg",
+        "image": "https://gregoryalbouy.com/media/images/projects/codemon.jpg",
         "tags": [ "ES6 modules", "Sass", "3D CSS", "Creative", "Game" ],
         "demo": "https://gregoryalbouy.com/projects/codemon",
         "repo": "https://github.com/gregoryalbouy/codemon"
     },
     {
         "name": "React-dex",
+        "slug": "react-dex",
         "description": "Pokedex made in React fetching the PokeAPI. An occasion to practise forms handling with many filter combinations.",
-        "image": "react-dex.jpg",
+        "image": "https://gregoryalbouy.com/media/images/projects/react-dex.jpg",
         "tags": [ "React", "Fetch API", "Sass" ],
         "demo": "https://gregoryalbouy.github.io/react-dex/build/",
         "repo": "https://github.com/gregoryalbouy/react-dex"
     },
     {
         "name": "Troc des trains",
+        "slug": "troc-des-trains",
         "description": "UX-UI research, mock-ups from scratch, and front demo of a responsive product page for a train tickets e-commerce.",
-        "image": "trocdestrains.jpg",
+        "image": "https://gregoryalbouy.com/media/images/projects/trocdestrains.jpg",
         "tags": [ "Responsive", "Mobile", "Sass", "Web components", "Fetch API" ],
         "demo": "https://gregoryalbouy.github.io/troc-des-trains/public/",
         "repo": "https://github.com/gregoryalbouy/troc-des-trains"
     },
     {
         "name": "Webcomponents framework",
+        "slug": "webcomponents-framework",
         "description": "Architecture & logics template for component-oriented webapps using Custom Elements with separate template files and no configuration.",
-        "image": "webcomponents-framework.jpg",
+        "image": "https://gregoryalbouy.com/media/images/projects/webcomponents-framework.jpg",
         "tags": [ "Web components", "TypeScript", "Sass", "Webpack", "Developer tool" ],
         "repo": "https://github.com/gregoryalbouy/webcomponents-framework"
     },
     {
         "name": "Webcomponents boilerplate",
+        "slug": "webcomponents-boilerplate",
         "description": "Lightweight vanilla JavaScript solution for ready-to-use Web components with separate HTML and style files.",
-        "image": "webcomponents-boilerplate.jpg",
+        "image": "https://gregoryalbouy.com/media/images/projects/webcomponents-boilerplate.jpg",
         "tags": [ "Web components", "ES6 Modules", "Fetch API", "Sass", "Developer tool" ],
         "repo": "https://github.com/gregoryalbouy/webcomponents-boilerplate"
     },
     {
         "name": "Ebuilder-js",
+        "slug": "ebuilder-js",
         "description": "Lightweight library published on npm allowing to build and manipulate elements in a single statement, with a functionnal touch.",
         "tags": [ "TypeScript", "Webpack", "NPM package", "Developer tool" ],
         "repo": "https://github.com/gregoryalbouy/ebuilder"
     },
     {
         "name": "GridChecker",
+        "slug": "grid-checker",
         "description": "Highly configurable Custom Element <grid-checker> that allows to check visually if an integration is conform to the designer's grid.",
-        "image": "gridchecker.jpg",
+        "image": "https://gregoryalbouy.com/media/images/projects/gridchecker.jpg",
         "tags": [ "TypeScript", "Webpack", "Web components", "Developer tool" ],
         "repo": "https://github.com/gregoryalbouy/gridchecker"
     },
     {
-        "name": "Gameboy™ COLOR",
+        "name": "Virtual Gameboy",
+        "slug": "virtual-gameboy",
         "description": "2 hours exam. A simple Gameboy COLOR like the one I got 20 years ago (and still have!). No game in it, sorry!",
-        "image": "gameboycolor.jpg",
+        "image": "https://gregoryalbouy.com/media/images/projects/gameboycolor.jpg",
         "tags": [ "Sass", "3D CSS" ],
         "demo": "https://gregoryalbouy.com/projects/gameboy-color",
         "isDisabled": false
     },
     {
         "name": "Ba$ketManager",
+        "slug": "basket-manager",
         "description": "A PHP exercise that I took some steps further to practice MVC architecture, object-oriented programming and form management.",
-        "image": "basketmanager.jpg",
-        "tags": [ "PHP", "POO", "MVC" ],
+        "image": "https://gregoryalbouy.com/media/images/projects/basketmanager.jpg",
+        "tags": [ "PHP", "OOP", "MVC" ],
         "demo": "https://gregoryalbouy.com/projects/basketmanager"
     },
     {
         "name": "Sarah Cornish",
+        "slug": "sarah-cornish",
         "description": "My very first integration in pure HTML and CSS. Design by Zhenya Rynzhuk.",
-        "image": "sarahcornish.jpg",
+        "image": "https://gregoryalbouy.com/media/images/projects/sarahcornish.jpg",
         "tags": [],
         "demo": "https://gregoryalbouy.com/projects/sarahcornish",
         "isDisabled": false

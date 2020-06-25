@@ -23,5 +23,5 @@ const boot = () => {
 
 const quickBoot = loadProjectData
 
-// boot()
-quickBoot()
+boot()
+// quickBoot()

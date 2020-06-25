@@ -47,3 +47,8 @@ declare module 'ebuilder-js' {
     const value: any
     export default value
 }
+
+declare module 'socket.io-client' {
+    const value: any
+    export default value
+}

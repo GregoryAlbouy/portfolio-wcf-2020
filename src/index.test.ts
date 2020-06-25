@@ -3,8 +3,14 @@
  */
 
 import './index.scss'
-import SomeTest from './tests/some-test.test.js'
-import TestComponent from './tests/components/test-component/test-component'
+import TestComponent from './tests/components/TestComponent/TestComponent'
+import MiniChat from './tests/components/MiniChat/MiniChat'
+// import MiniChat from './components/MiniChat/MiniChat'
+// import { loadProjectData } from './shared/utils'
+import IO from './tests/IO'
 
-SomeTest()
+// loadProjectData()
 document.body.appendChild(new TestComponent())
+document.body.appendChild(new MiniChat())
+// IO()
+// document.body.appendChild(new MiniChat())

@@ -3,11 +3,26 @@ page-section {
     min-height: 72rem;
     padding: 4rem 0;
 
-    & h2 {
+    & > h2 {
+        position: relative;
         width: var(--content-width);
-        margin: auto;
+        // margin: auto;
+        margin-left: 10%;;
         margin-bottom: 4rem;
-        font-size: 4rem;
+        font-family: 'Big Shoulders Display';
+        color: rgba(255, 255, 255, .1);
+        font-size: 8rem;
+        text-transform: uppercase;
+        box-sizing: border-box;
+
+        &::before {
+            content: ".";
+            display: block;
+            position: absolute;
+            right: 100%;
+            color: inherit;
+            font-size: inherit;
+        }
     }
 }
 

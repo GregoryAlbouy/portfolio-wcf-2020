@@ -41,6 +41,7 @@
   "dependencies": {
     "@babel/runtime": "^7.9.6",
     "ebuilder-js": "0.0.12",
+    "socket.io-client": "^2.3.0",
     "websocket-extensions": ">=0.1.4"
   }
 }

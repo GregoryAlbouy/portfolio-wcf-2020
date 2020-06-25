@@ -13,7 +13,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../src/index.html')
+            template: path.resolve(__dirname, '../src/index.html'),
+            inject: "body"
         }),
         new MiniCssExtractPlugin({
             filename: `assets/style/style.${hash}.css`
@@ -38,7 +39,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.html?$/i,
+                test: /\.c\.html?$/i,
                 use: {
                     loader: 'html-loader',
                     options: {
@@ -46,6 +47,17 @@ module.exports = {
                     },
                 }
             },
+            // {
+            //     test: /\.html$/,
+            //     exclude: /\.c\.html?$/,
+            //     use: {
+            //         loader: 'html-loader',
+            //         query: {
+            //             // interpolate: 'require',
+            //             attributes: ['href']
+            //         }
+            //     }
+            // },
             {
                 // general .scss (.c.scss excluded): to css file
                 test: /(?<!\.c)\.s[ac]ss$/i,

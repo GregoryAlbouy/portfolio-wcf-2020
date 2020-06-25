@@ -21,4 +21,7 @@ const boot = () => {
     document.body.appendChild(appLoader)
 }
 
-boot()
+const quickBoot = loadProjectData
+
+// boot()
+quickBoot()

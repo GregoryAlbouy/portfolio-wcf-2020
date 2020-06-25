@@ -36,8 +36,6 @@ export default class FilterBox extends ShadowComponent {
             tagButtons,
             handleFilterSet: callback
         }, false)
-
-        console.log(this.props.tagButtons[4].props)
     }
 
     handleTagButtonClick(event: MouseEvent) {

@@ -1,10 +1,12 @@
 page-section {
     display: block;
+    min-height: 72rem;
     padding: 4rem 0;
 
     & h2 {
         width: var(--content-width);
         margin: auto;
+        margin-bottom: 4rem;
         font-size: 4rem;
     }
 }

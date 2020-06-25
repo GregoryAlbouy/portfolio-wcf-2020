@@ -1,3 +1,18 @@
+@use '../TagButton/TagButton.c.scss';
+
+@keyframes apparition {
+    0% { opacity: 0; transform: translateY(50%); }
+    100% { opacity: 1; transform: translateY(0%); }
+}
+
+@keyframes blink {
+    // 85% { border-color: currentColor; }
+    // 90% { border-color: var(--main-color); }
+    // 95% { border-color: currentColor; }
+    0% { opacity: .6; }
+    100% { opacity: 1; }
+}
+
 [data-ref=list] {
     list-style: none;
     width: var(--content-width);
@@ -5,8 +20,26 @@
     display: flex;
     flex-wrap: wrap;
     margin: auto !important;
+}
 
-    li {
-        margin: 1rem;
+li {
+    margin: 1rem;
+}
+
+li.empty {
+    margin: auto;
+    text-align: center;
+
+    h4 {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    button {
+        display: inline-block;
+        // border-color: transparent;
+        animation:
+            apparition .5s 1.5s both cubic-bezier(.6, 0, .6, 1.6),
+            blink 2s 2s alternate infinite;
     }
 }

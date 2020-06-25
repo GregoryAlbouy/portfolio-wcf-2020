@@ -57,14 +57,14 @@ export default abstract class BaseComponent extends HTMLElement
         }}
     }
 
-    setProp(propName: string, value: any) {
+    setProp(propName: string, value: any, render = true) {
         this.props[propName] = value
-        this.render()
+        if (render) this.render()
     }
 
-    setProps(input: object) {
+    setProps(input: object, render = true) {
         Object.assign(this.props, input)
-        this.render()
+        if (render) this.render()
     }
 
     setRefList() {
@@ -90,6 +90,9 @@ export default abstract class BaseComponent extends HTMLElement
         return (window.getComputedStyle(this) as any)[name]
     }
 
+    /**
+     * TODO: save current tree before render to avoid erasing of computed elements
+     */
     render() {
         const rawTemplate = (this.constructor as self).TEMPLATE_STR
         const processedTemplate = handlebars.compile(rawTemplate, { noEscape: true })(this.props)

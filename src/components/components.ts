@@ -9,6 +9,9 @@ import PageSection from './PageSection/PageSection'
 import ProjectCard from './ProjectCard/ProjectCard'
 import ProjectList from './ProjectList/ProjectList'
 import AsideInfo from './AsideInfo/AsideInfo'
+import FilterBox from './FilterBox/FilterBox'
+import TagButton from './TagButton/TagButton'
+
 
 export {
     BaseComponent,
@@ -21,7 +24,9 @@ export {
     PageSection,
     ProjectCard,
     ProjectList,
-    AsideInfo
+    AsideInfo,
+    FilterBox,
+    TagButton
 }
 
 interface ComponentOptions {

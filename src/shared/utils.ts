@@ -1,5 +1,5 @@
 export const loadProjectData = async () => {
-    const URL = __API_BASE_URL + '/api/v1/projects'
+    const URL = __API_BASE_URL__ + '/api/v1/projects'
     const data = await (await fetch(URL)).json()
 
     // choose between event / return
@@ -9,7 +9,7 @@ export const loadProjectData = async () => {
 
 export const postMessage = async (messageData: MessageData) => {
     try {
-        const response = await fetch(__API_BASE_URL + '/contact', {
+        const response = await fetch(__API_BASE_URL__ + '/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json;charset=utf-8' },
             body: JSON.stringify(messageData)

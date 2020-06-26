@@ -15,7 +15,7 @@ module.exports = webpackMerge(commonConfig, {
     // devtool: 'source-map'
     plugins: [
         new webpack.DefinePlugin({
-            __API_BASE_URL: JSON.stringify(API_BASE_URL)
+            __API_BASE_URL__: JSON.stringify(API_BASE_URL)
         }),
     ]
 })

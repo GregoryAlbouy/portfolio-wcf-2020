@@ -20,4 +20,4 @@ type MessageData = {
     message: string
 }
 
-declare var __API_BASE_URL: string
+declare var __API_BASE_URL__: string

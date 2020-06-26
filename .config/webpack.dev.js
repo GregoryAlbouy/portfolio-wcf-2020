@@ -1,10 +1,19 @@
+const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const commonConfig = require('./webpack.common.js')
 
 const PORT = 9999
+const MODE = 'development'
+const API_BASE_URL =  process.env.LOCAL_API_BASE_URL
+
+console.table({
+    PORT,
+    MODE,
+    API_BASE_URL
+})
 
 module.exports = webpackMerge(commonConfig, {
-    mode: 'development',
+    mode: MODE,
     devtool: 'source-map',
     devServer: {
         contentBase: './dist',
@@ -12,4 +21,9 @@ module.exports = webpackMerge(commonConfig, {
         hot: true,
         port: PORT,
     },
+    plugins: [
+        new webpack.DefinePlugin({
+            __API_BASE_URL: JSON.stringify(API_BASE_URL)
+        }),
+    ]
 })

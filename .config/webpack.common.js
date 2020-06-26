@@ -1,9 +1,15 @@
+const webpack = require('webpack')
 const path = require('path')
+const dotenv = require('dotenv')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-const hash = process.env.NODE_ENV === 'production' ? '[contenthash]' : '[hash]'
+dotenv.config({ path: './.config/.env' })
+const mode = process.env.NODE_ENV
+const hash = mode === 'production' ? '[contenthash]' : '[hash]'
+
+console.log(process.env.LOCAL_API_BASE_URL)
 
 module.exports = {
     entry: path.resolve(__dirname, '../src/index.ts'),

@@ -3,6 +3,8 @@
 //     (this: Document, event: DocumentEventMap[]) => any,
 //     (boolean | AddEventListenerOptions)?
 // ]
+
+// TEMP
 type EventTuple = [
     string,
     (this: any, event: any) => any,
@@ -12,13 +14,10 @@ type StringObject = { [key: string]: string }
 type TemplateObject = { html: string, css: string }
 type ComponentProps = { [key: string]: any }
 type ComponentRefs = { [key: string]: Element }
-// interface EBObject {
-//     out: Function
-// }
-
-
 type MessageData = {
     email: string,
     subject: string,
     message: string
 }
+
+declare var __API_BASE_URL: string

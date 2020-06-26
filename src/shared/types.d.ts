@@ -15,3 +15,10 @@ type ComponentRefs = { [key: string]: Element }
 // interface EBObject {
 //     out: Function
 // }
+
+
+type MessageData = {
+    email: string,
+    subject: string,
+    message: string
+}

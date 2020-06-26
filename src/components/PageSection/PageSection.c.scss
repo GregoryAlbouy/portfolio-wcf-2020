@@ -1,6 +1,6 @@
 page-section {
     display: block;
-    min-height: 72rem;
+    // min-height: 60rem;
     padding: 4rem 0;
 
     & > h2 {
@@ -29,6 +29,6 @@ page-section {
 @media (max-width: 640px) {
     page-section h2 {
         width: 100%;
-        padding-left: 4rem;
+        margin-left: 4rem;
     }
 }

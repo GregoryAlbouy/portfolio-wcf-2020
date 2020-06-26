@@ -1,0 +1,61 @@
+@use '../TagButton/TagButton.c.scss';
+
+:host {
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+form {
+    width: var(--content-width);
+    max-width: 60rem;
+    margin: auto;
+}
+
+input,
+textarea {
+    display: block;
+    width: 100%;
+    background: rgba(0, 0, 0, .4);
+    // background: transparent;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    outline: none;
+    color: #CCC;
+    font-family: 'Raleway', sans-serif;
+
+    &:focus {
+        box-shadow: 0 0 .6rem rgba(255, 255, 255, .4);
+    }
+}
+
+button {
+    min-width: 20rem;
+    margin: auto;
+    font-size: 2rem;
+
+    &:hover,
+    &:focus {
+        color: var(--main-color);
+    }
+}
+
+input {
+    height: 4rem;
+}
+
+textarea {
+    height: 20rem;
+    resize: none;
+}
+
+
+@media (max-width: 640px) {
+    form {
+        max-width: none;
+    }
+}

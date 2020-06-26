@@ -11,7 +11,7 @@ import ProjectList from './ProjectList/ProjectList'
 import AsideInfo from './AsideInfo/AsideInfo'
 import FilterBox from './FilterBox/FilterBox'
 import TagButton from './TagButton/TagButton'
-
+import ContactBox from './ContactBox/ContactBox'
 
 export {
     BaseComponent,
@@ -26,7 +26,8 @@ export {
     ProjectList,
     AsideInfo,
     FilterBox,
-    TagButton
+    TagButton,
+    ContactBox
 }
 
 interface ComponentOptions {

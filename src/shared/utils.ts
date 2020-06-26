@@ -1,7 +1,5 @@
-const API_BASE_URL = 'https://gregoryalbouy-backend.ew.r.appspot.com/'
-
 export const loadProjectData = async () => {
-    const URL = API_BASE_URL + '/api/v1/projects'
+    const URL = __API_BASE_URL + '/api/v1/projects'
     const data = await (await fetch(URL)).json()
 
     // choose between event / return
@@ -10,13 +8,19 @@ export const loadProjectData = async () => {
 }
 
 export const postMessage = async (messageData: MessageData) => {
-    const response = await fetch(API_BASE_URL + '/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json;charset=utf-8' },
-        body: JSON.stringify(messageData)
-    })
+    try {
+        const response = await fetch(__API_BASE_URL + '/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json;charset=utf-8' },
+            body: JSON.stringify(messageData)
+        })
 
-    return response.json()
+        if (!response.ok && response.status === 400) throw new Error(response.statusText)
+
+        return response.json()
+    } catch(error) {
+        console.warn(error)
+    }
 }
 
 export const pause = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))

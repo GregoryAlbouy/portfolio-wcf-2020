@@ -19,7 +19,7 @@ export const postMessage = async (messageData: MessageData) => {
 
         return response.json()
     } catch(error) {
-        console.warn(error)
+        // oops, todo
     }
 }
 

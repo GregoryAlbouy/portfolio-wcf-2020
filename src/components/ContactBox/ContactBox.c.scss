@@ -53,9 +53,23 @@ textarea {
     resize: none;
 }
 
+@keyframes slide-left {
+    0% { transform: translateX(120%); }
+    100% { transform: translateX(0%); }
+}
+
+aside-info {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    width: 20rem;
+    animation: slide-left .4s both;
+}
 
 @media (max-width: 640px) {
     form {
+        width: 100%;
         max-width: none;
+        padding: 0 10%;
     }
 }

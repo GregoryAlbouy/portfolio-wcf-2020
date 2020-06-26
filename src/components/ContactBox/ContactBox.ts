@@ -32,12 +32,18 @@ export default class ContactBox extends ShadowComponent {
         }
     }
 
-    handleSuccess(response: any) {
-        console.log('success, response: ', response)
+    handleSuccess(response?: any) {
         this.$form.reset()
+        this.notify(true)
     }
 
-    handleError(error: any) {
-        console.warn('error, response: ', error)
+    handleError(error?: any) {
+        this.notify(false)
+    }
+
+    notify(isSuccess: boolean) {
+        const notificationTemplate = isSuccess ? this.$success : this.$error
+        this.root.appendChild(notificationTemplate.content.cloneNode(true))
+        setTimeout(() => this.select('aside-info')!.remove(), 3000)
     }
 }

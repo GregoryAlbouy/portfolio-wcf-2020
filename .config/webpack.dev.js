@@ -18,6 +18,7 @@ module.exports = webpackMerge(commonConfig, {
     devServer: {
         contentBase: './dist',
         watchContentBase: true,
+        historyApiFallback: true,
         hot: true,
         port: PORT,
     },

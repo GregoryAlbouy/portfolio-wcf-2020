@@ -3,4 +3,5 @@
 /\.config/\.env
 
 firebase.json
+.firebase
 .firebaserc

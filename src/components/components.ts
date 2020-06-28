@@ -9,6 +9,9 @@ import AsideInfo from './AsideInfo/AsideInfo'
 import FilterBox from './FilterBox/FilterBox'
 import TagButton from './TagButton/TagButton'
 import ContactBox from './ContactBox/ContactBox'
+import PageAbout from './PageAbout/PageAbout'
+import PageProjects from './PageProjects/PageProjects'
+import PageContact from './PageContact/PageContact'
 
 export {
     AppRoot,
@@ -21,5 +24,8 @@ export {
     AsideInfo,
     FilterBox,
     TagButton,
-    ContactBox
+    ContactBox,
+    PageAbout,
+    PageProjects,
+    PageContact
 }

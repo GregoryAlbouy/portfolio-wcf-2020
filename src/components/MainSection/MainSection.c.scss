@@ -1,4 +1,4 @@
-page-section {
+main-section {
     display: block;
     // min-height: 60rem;
     padding: 4rem 0;
@@ -27,7 +27,7 @@ page-section {
 }
 
 @media (max-width: 640px) {
-    page-section h2 {
+    main-section h2 {
         width: 100%;
         margin-left: 4rem;
     }

@@ -1,13 +1,8 @@
-import {
-    Component,
-    LightComponent,
-    ShadowComponent
-} from '../core'
 import AppLoader from './AppLoader/AppLoader'
 import AppRoot from './AppRoot/AppRoot'
-import PageHeader from './PageHeader/PageHeader'
-import PageFooter from './PageFooter/PageFooter'
-import PageSection from './PageSection/PageSection'
+import MainHeader from './MainHeader/MainHeader'
+import MainFooter from './MainFooter/MainFooter'
+import MainSection from './MainSection/MainSection'
 import ProjectCard from './ProjectCard/ProjectCard'
 import ProjectList from './ProjectList/ProjectList'
 import AsideInfo from './AsideInfo/AsideInfo'
@@ -16,14 +11,11 @@ import TagButton from './TagButton/TagButton'
 import ContactBox from './ContactBox/ContactBox'
 
 export {
-    Component,
-    LightComponent,
-    ShadowComponent,
     AppRoot,
     AppLoader,
-    PageHeader,
-    PageFooter,
-    PageSection,
+    MainHeader,
+    MainFooter,
+    MainSection,
     ProjectCard,
     ProjectList,
     AsideInfo,

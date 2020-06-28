@@ -1,12 +1,12 @@
-import HTML_STR from './PageSection.c.html'
-import CSS_STR from './PageSection.c.scss'
-import { Component, LightComponent } from '../components'
+import HTML_STR from './MainSection.c.html'
+import CSS_STR from './MainSection.c.scss'
+import { Component, LightComponent } from '../../core'
 
 @Component({
-    tagname: 'page-section',
+    tagname: 'main-section',
     template: { html: HTML_STR, css: CSS_STR }
 })
-export default class PageSection extends LightComponent
+export default class MainSection extends LightComponent
 {
     props: ComponentProps = {
         title: '',

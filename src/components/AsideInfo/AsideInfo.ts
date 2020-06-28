@@ -1,6 +1,6 @@
 import HTML_STR from './AsideInfo.c.html'
 import CSS_STR from './AsideInfo.c.scss'
-import { Component, ShadowComponent } from '../components'
+import { Component, ShadowComponent } from '../../core'
 
 @Component({
     tagname: 'aside-info',

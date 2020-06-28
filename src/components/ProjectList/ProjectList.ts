@@ -2,12 +2,8 @@ import HTML_STR from './ProjectList.c.html'
 import CSS_STR from './ProjectList.c.scss'
 import EBuilder from 'ebuilder-js'
 import Check from '../../shared/Check'
-import {
-    Component,
-    LightComponent,
-    ShadowComponent,
-    ProjectCard
-} from '../components'
+import { Component, ShadowComponent } from '../../core'
+import { ProjectCard } from '../components'
 
 
 @Component({

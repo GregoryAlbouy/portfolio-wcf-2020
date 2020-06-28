@@ -2,6 +2,7 @@ import type { RouteComponent } from '../routing/Router'
 import { Router } from '../routing'
 
 interface RouteOptions {
+    title?: string
     beforeAppend?: Function
     afterAppend?: Function
     beforeRemove?: Function

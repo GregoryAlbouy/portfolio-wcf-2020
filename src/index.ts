@@ -4,7 +4,7 @@ import {
     loadProjectData,
     pause
 } from './shared/utils'
-import Router from './core/Router'
+import { Router } from './core'
 
 const boot = () => {
 

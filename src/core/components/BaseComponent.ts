@@ -29,6 +29,8 @@ export default abstract class BaseComponent extends HTMLElement
                 .setContent(processedTemplate)
                 .element.content.cloneNode(true)
         )
+
+        this.manageLinkRoutes()
     }
 
     parse(html: string) {
@@ -90,6 +92,46 @@ export default abstract class BaseComponent extends HTMLElement
         return (window.getComputedStyle(this) as any)[name]
     }
 
+    manageLinkRoutes() {
+        const links = this.selectAll('a[data-link]')
+
+        const isSpecialClick = (event: MouseEvent) => (
+            event.ctrlKey
+            || event.metaKey
+            || event.shiftKey
+            || (event.button && event.button === 1)
+        )
+
+        const handleClick = (event: Event) => {
+            if (isSpecialClick(event as MouseEvent)) return
+
+            const link = event.currentTarget as HTMLAnchorElement
+            const href = link.href
+
+            if (!href || link.getAttribute('href')!.match(/^#/)) return
+
+            // new URL(href)  => in Router, after addEventListener('navigate', ...)
+
+
+            // console.log(url)
+
+            // if (!path || path.match(/^#/)) return
+
+            event.preventDefault()
+            
+
+            // window.dispatchEvent(new CustomEvent('navigate', {
+            //     detail: path
+            // }))
+
+            event.preventDefault()
+        }
+
+        const addClickListener = (target: Element) => target.addEventListener('click', handleClick)
+
+        links.forEach(addClickListener)
+    }
+
     /**
      * TODO: save current tree before render to avoid erasing of computed elements
      */
@@ -101,6 +143,7 @@ export default abstract class BaseComponent extends HTMLElement
         this.root.innerHTML = processedTemplate
 
         this.setRefList()
+        this.manageLinkRoutes()
         this.dispatchEvent(new CustomEvent('rendered'))
     }
 }

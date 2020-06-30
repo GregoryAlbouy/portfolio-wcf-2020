@@ -4,8 +4,6 @@ import {
     loadProjectData,
     pause
 } from './shared/utils'
-import Router from './Router'
-import { routes } from './routes'
 
 const boot = () => {
 
@@ -24,12 +22,6 @@ const boot = () => {
 }
 
 const fastBoot = loadProjectData
-
-
-export const router = new Router(routes)
-// router.goto(window.location.hash)
-
-console.log(window.location.hash)
 
 boot()
 // fastBoot()

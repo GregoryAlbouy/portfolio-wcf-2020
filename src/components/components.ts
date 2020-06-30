@@ -12,7 +12,6 @@ import AsideInfo from './AsideInfo/AsideInfo'
 import FilterBox from './FilterBox/FilterBox'
 import TagButton from './TagButton/TagButton'
 import ContactBox from './ContactBox/ContactBox'
-import AdminRoot from './AdminRoot/AdminRoot'
 
 export {
     BaseComponent,
@@ -29,7 +28,6 @@ export {
     FilterBox,
     TagButton,
     ContactBox,
-    AdminRoot
 }
 
 interface ComponentOptions {

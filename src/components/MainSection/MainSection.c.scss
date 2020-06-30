@@ -26,6 +26,14 @@ main-section {
     }
 }
 
+page-section.dark {
+    background: rgba(0, 0, 0, .2);
+
+    h2 {
+        color: rgba(200, 200, 255, .1);
+    }
+}
+
 @media (max-width: 640px) {
     main-section h2 {
         width: 100%;

@@ -1,5 +1,6 @@
 import handlebars from 'handlebars'
 import Build from 'ebuilder-js'
+import { Router } from '../routing'
 
 type self = typeof BaseComponent
 
@@ -110,21 +111,17 @@ export default abstract class BaseComponent extends HTMLElement
 
             if (!href || link.getAttribute('href')!.match(/^#/)) return
 
-            // new URL(href)  => in Router, after addEventListener('navigate', ...)
-
-
-            // console.log(url)
-
-            // if (!path || path.match(/^#/)) return
-
             event.preventDefault()
             
+            // // solution 1: use unique router instance, which must be instanciated in the core
+            // import { router } from '../routing'
+            // router.to(href)
 
-            // window.dispatchEvent(new CustomEvent('navigate', {
-            //     detail: path
-            // }))
+            // solution 2: use custom events
+            window.dispatchEvent(new CustomEvent('navigate', { detail: {
+                href
+            }}))
 
-            event.preventDefault()
         }
 
         const addClickListener = (target: Element) => target.addEventListener('click', handleClick)

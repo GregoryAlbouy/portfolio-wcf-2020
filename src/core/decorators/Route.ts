@@ -14,6 +14,6 @@ interface RouteOptions {
  */
 export default function Route(path: string, options: RouteOptions = {}) {
     return (target: RouteComponent) => {
-        Router.setRoute(path, target)
+        Router.setRoute(path, target, options)
     }
 }

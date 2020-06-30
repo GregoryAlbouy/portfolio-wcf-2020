@@ -5,9 +5,19 @@
 }
 
 @mixin link {
-    a, a:visited {
+    a,
+    a:visited {
         color: rgba(0, 255, 237, .8);
         font-size: inherit;
         text-transform: inherit;
+    }
+}
+
+@mixin box-sizing {
+    *,
+    *::before,
+    *::after,
+    :host {
+        box-sizing: border-box;
     }
 }

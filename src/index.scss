@@ -46,3 +46,9 @@ a, a:visited {
         --content-width: 30rem;
     }
 }
+
+@media (max-width: 480px) {
+    :root {
+        font-size: 9px;
+    }
+}

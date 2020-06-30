@@ -1,6 +1,6 @@
 @use '../../assets/style/utils' as utils;
 
-* { box-sizing: border-box; }
+@include utils.box-sizing;
 
 :host {
     display: block;

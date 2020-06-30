@@ -3,3 +3,11 @@
     top: calc(50% - #{$n / 2});
     left: calc(50% - #{$n / 2});
 }
+
+@mixin link {
+    a, a:visited {
+        color: rgba(0, 255, 237, .8);
+        font-size: inherit;
+        text-transform: inherit;
+    }
+}

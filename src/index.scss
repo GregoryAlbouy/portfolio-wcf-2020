@@ -9,15 +9,19 @@
     font-size: 10px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-}
-
 body {
     background: #181822;
     color: var(--text-color);
     font-family: 'Raleway';
     font-weight: 200;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+}
+
+a, a:visited {
+    color: inherit;
 }
 
 .full-height {

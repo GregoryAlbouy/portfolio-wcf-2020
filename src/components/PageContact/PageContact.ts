@@ -1,6 +1,6 @@
 import HTML_STR from './PageContact.c.html'
 import CSS_STR from './PageContact.c.scss'
-import { Component, LightComponent, Route } from '../../core'
+import { Component, LightComponent, Route } from '../../../core'
 
 @Component({
     tagname: 'page-contact',

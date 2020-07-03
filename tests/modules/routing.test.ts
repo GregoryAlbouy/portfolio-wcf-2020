@@ -1,4 +1,4 @@
-import { Router } from '../../src/core'
+import { Router } from '../../core'
 import { RouteHome } from "../components/test-components"
 import { AppRootTest } from "../components/test-components"
 

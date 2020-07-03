@@ -1,6 +1,6 @@
 import HTML_STR from './TagButton.c.html'
 import CSS_STR from './TagButton.c.scss'
-import { Component, ShadowComponent } from '../../core'
+import { Component, ShadowComponent } from '../../../core'
 
 @Component({
     tagname: 'tag-button',

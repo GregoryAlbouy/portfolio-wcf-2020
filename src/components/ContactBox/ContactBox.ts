@@ -1,6 +1,6 @@
 import HTML_STR from './ContactBox.c.html'
 import CSS_STR from './ContactBox.c.scss'
-import { Component, ShadowComponent } from '../../core'
+import { Component, ShadowComponent } from '../../../core'
 import { postMessage } from '../../shared/utils'
 
 @Component({

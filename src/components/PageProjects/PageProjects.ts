@@ -1,6 +1,6 @@
 import HTML_STR from './PageProjects.c.html'
 import CSS_STR from './PageProjects.c.scss'
-import { Component, LightComponent, Route } from '../../core'
+import { Component, LightComponent, Route } from '../../../core'
 
 @Component({
     tagname: 'page-projects',

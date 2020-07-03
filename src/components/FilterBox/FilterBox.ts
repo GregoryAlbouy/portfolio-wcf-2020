@@ -1,6 +1,6 @@
 import HTML_STR from './FilterBox.c.html'
 import CSS_STR from './FilterBox.c.scss'
-import { Component, ShadowComponent } from '../../core'
+import { Component, ShadowComponent } from '../../../core'
 import { TagButton } from '../components'
 import EBuilder from 'ebuilder-js'
 

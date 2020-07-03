@@ -1,6 +1,6 @@
 import HTML_STR from './MainSection.c.html'
 import CSS_STR from './MainSection.c.scss'
-import { Component, LightComponent } from '../../core'
+import { Component, LightComponent } from '../../../core'
 
 @Component({
     tagname: 'main-section',

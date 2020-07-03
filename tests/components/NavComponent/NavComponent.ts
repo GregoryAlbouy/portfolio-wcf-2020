@@ -1,6 +1,6 @@
 import HTML_STR from './NavComponent.c.html'
 import CSS_STR from './NavComponent.c.scss'
-import { Component, ShadowComponent } from '../../../src/core'
+import { Component, ShadowComponent } from '../../../core'
 
 @Component({
     tagname: 'nav-component',

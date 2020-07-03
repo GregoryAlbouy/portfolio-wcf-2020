@@ -1,6 +1,6 @@
 import HTML_STR from './ProjectCard.c.html'
 import CSS_STR from './ProjectCard.c.scss'
-import { Component, ShadowComponent } from '../../core'
+import { Component, ShadowComponent } from '../../../core'
 
 @Component({
     tagname: 'project-card',

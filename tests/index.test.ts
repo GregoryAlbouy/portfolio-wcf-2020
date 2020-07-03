@@ -3,11 +3,8 @@
  */
 
 import '../src/index.scss'
-// import TestComponent from './tests/components/TestComponent/TestComponent'
-// import { loadProjectData } from './shared/utils'
 import RoutingTest from './modules/routing.test'
+// import { loadProjectData } from './shared/utils'
 
 // loadProjectData()
-// document.body.appendChild(new TestComponent())
-
 new RoutingTest()

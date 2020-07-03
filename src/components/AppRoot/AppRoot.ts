@@ -1,6 +1,6 @@
 import HTML_STR from './AppRoot.c.html'
 import CSS_STR from './AppRoot.c.scss'
-import { Component, LightComponent } from '../../core'
+import { Component, LightComponent } from '../../../core'
 
 @Component({
     tagname: 'app-root',

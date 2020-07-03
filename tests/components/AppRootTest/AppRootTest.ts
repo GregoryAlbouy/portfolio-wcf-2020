@@ -1,6 +1,6 @@
 import HTML_STR from './AppRootTest.c.html'
 import CSS_STR from './AppRootTest.c.scss'
-import { Component, LightComponent } from '../../../src/core'
+import { Component, LightComponent } from '../../../core'
 
 @Component({
     tagname: 'app-root-test',

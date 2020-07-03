@@ -1,6 +1,6 @@
 import HTML_STR from './RouteProjects.c.html'
 import CSS_STR from './RouteProjects.c.scss'
-import { Component, ShadowComponent, Route } from '../../../src/core'
+import { Component, ShadowComponent, Route } from '../../../core'
 
 @Component({
     tagname: 'route-projects',

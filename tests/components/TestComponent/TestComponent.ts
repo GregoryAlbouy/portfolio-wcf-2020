@@ -1,6 +1,6 @@
 import HTML_STR from './TestComponent.c.html'
 import CSS_STR from './TestComponent.c.scss'
-import { Component, ShadowComponent } from '../../../src/core'
+import { Component, ShadowComponent } from '../../../core'
 
 
 @Component({

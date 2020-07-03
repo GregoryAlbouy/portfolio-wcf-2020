@@ -1,6 +1,6 @@
 import HTML_STR from './RouteHome.c.html'
 import CSS_STR from './RouteHome.c.scss'
-import { Component, ShadowComponent, Route } from '../../../src/core'
+import { Component, ShadowComponent, Route } from '../../../core'
 
 @Component({
     tagname: 'route-home',

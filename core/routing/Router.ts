@@ -1,3 +1,10 @@
+/**
+ * TODO:
+ * - LOT of clean-up & refacto
+ * - Add custom hooks support
+ * - Add custom generic animation function support
+ */
+
 import BaseComponent from '../components/BaseComponent'
 
 export type RouteComponent = BaseComponent | typeof BaseComponent
@@ -26,6 +33,10 @@ export default class Router {
     currentComponent: RouteComponent
     targetContainer: Node
 
+    // Move in a more adequate class, or get it through another way
+    // (e.g. via selector before any action, OR specify app name upstream)
+    defaultTitle = document.querySelector('title')!.textContent
+
 
     /**
      * TODO: remove initialization steps that prevents from having several instances
@@ -41,6 +52,8 @@ export default class Router {
         this.currentRouteTuple = root
         this.currentComponent = new (this.currentRouteTuple.component as any)()
         this.targetContainer.appendChild(this.currentComponent as Node)
+
+        console.log(location)
     }
 
     static setRoute(path: string, component: RouteComponent, options: RouteOptions) {
@@ -54,79 +67,53 @@ export default class Router {
         })
     }
 
-    to(href: string) {
-
+    getPageFromHrefValue(href: string) {
         const { pathname } = new URL(href)
         const page = Router.routes.get(pathname)
+        
+        if (!page) throw new Error(JSON.stringify({
+            code: 404,
+            pathname
+        }))
+        // if (!page) throw new Error(pathname)
 
-        if (!page) throw new Error(`Route ${pathname} does not exist.`)
+        return page
+    }
 
-        const { component, title } = page
-        window.history.pushState(null, title as string, href)
+    to(href: string) {
+        console.log(href)
+        try {
+            const page = this.getPageFromHrefValue(href)
 
-
-        // preRemove hook
-        this.targetContainer.removeChild(this.currentComponent as Node)
-        // postRemove hook
-
-        this.currentComponent = new (component as any)()
-
-        // preAppend hook
-        this.targetContainer.appendChild(this.currentComponent as Node)
-        // postAppend hook
+            const { component, title } = page
+    
+    
+            this.setPageTitle(title)
+            window.history.pushState(null, title || '', href)
+    
+            // preRemove hook
+            this.targetContainer.removeChild(this.currentComponent as Node)
+            // postRemove hook
+    
+            this.currentComponent = new (component as any)()
+    
+            // preAppend hook
+            this.targetContainer.appendChild(this.currentComponent as Node)
+            // postAppend hook
+        } catch(error) {
+            const errorData = JSON.parse(error.message)
+            if (errorData.code === 404) this.handle404(errorData.pathname)
+        }
 
     }
+
+    setPageTitle(value?: string) {
+        const titleElement = document.querySelector('title')
+        if (!titleElement) return
+        titleElement.textContent = value || this.defaultTitle
+    }
+
+    handle404(requestedPath?: string) {
+        this.to(window.location.origin + '/404')
+    }
 }
-
-// move to index.ts?
-// export const router = new Router()
-
-// export default class Router {
-//     routes: RouteMap
-//     current: RouteComponent
-//     animate?: RouteAnimation
-
-//     constructor(routes: RouteMap | RouteObject, options: RouterOptions = {}) {
-//         const { defaultPath, animate, listen } = options
-
-//         this.routes = routes
-//         this.current = new this.routes['/']()
-//         if (animate) this.animate = animate
-//         this.init()
-//         this.listen()
-//     }
-
-//     listen() {
-//         window.addEventListener('popstate', (event) => console.log(event))
-//     }
-//     init() {
-//         document.body.appendChild(this.current)
-//     }
-
-//     async goto(path: string, animate?: RouteAnimation) {
-//         const prev = this.current
-//         const next = new this.routes[path]()
-//         this.current = next
-
-//         window.history.pushState(null, '', path)
-//         prev.insertAdjacentElement('afterend', next)
-//         if (animate) await animate(prev, next)
-//         prev.remove()
-
-//     }
-// }
-
-// const animationCallback = (prev: any, next: any) => {
-//     return console.log('animationCallback() called')
-// }
-
-// const animate = () => new Promise((resolve) => {
-//     animationCallback('', '')
-//     resolve()
-// })
-
-
-// console.log(new Map({
-//     salut: 'Fred',
-//     jean: 'non'
-// }))

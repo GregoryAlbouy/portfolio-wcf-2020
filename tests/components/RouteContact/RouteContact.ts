@@ -6,5 +6,5 @@ import { Component, ShadowComponent, Route } from '../../../core'
     tagname: 'route-contact',
     template: { html: HTML_STR, css: CSS_STR }
 })
-@Route('/contact')
+@Route('/contact', { title: 'Contact | Gregory Albouy' })
 export default class RouteContact extends ShadowComponent {}

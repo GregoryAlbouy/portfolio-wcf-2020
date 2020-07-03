@@ -1,13 +1,18 @@
 import { Router } from '../../core'
-import { RouteHome } from "../components/test-components"
-import { AppRootTest } from "../components/test-components"
+import { RouteHome } from '../components/test-components'
+import { AppRootTest } from '../components/test-components'
+import EBuilder from 'ebuilder-js'
 
 export default class RoutingTest {
     constructor() {
         console.log('------------- ROUTING TEST ------------')
 
-        document.body.appendChild(new AppRootTest())
+        const appRootTest = new AppRootTest()
 
-        const router = new Router()
+        document.body.appendChild(appRootTest)
+
+        const router = new Router({
+            container: appRootTest
+        })
     }
 }

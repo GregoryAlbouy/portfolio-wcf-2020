@@ -18,12 +18,13 @@ interface RouteOptions {
     afterRemove?: Function
 }
 // type RouteObject = { [path: string]: typeof HTMLElement }
-// type RouteAnimation = (prev: RouteComponent, next: RouteComponent ) => Promise<void>
-// type RouterOptions = {
-//     animate?: RouteAnimation,
-//     defaultPath?: string,
-//     listen?: boolean
-// }
+type RouteAnimation = (prev: RouteComponent, next: RouteComponent ) => Promise<void>
+type RouterOptions = {
+    animation?: RouteAnimation,
+    defaultPath?: string,
+    container?: Node,
+    listen?: boolean
+}
 
 export default class Router {
     static routes: RouteMap = new Map()
@@ -31,7 +32,7 @@ export default class Router {
     // currentPage: RouteComponent
     currentRouteTuple: RouteTuple
     currentComponent: RouteComponent
-    targetContainer: Node
+    container: Node = document.querySelector('app-root')!
 
     // Move in a more adequate class, or get it through another way
     // (e.g. via selector before any action, OR specify app name upstream)
@@ -41,19 +42,21 @@ export default class Router {
     /**
      * TODO: remove initialization steps that prevents from having several instances
      */
-    constructor() {
+    constructor(options: RouterOptions = {}) {
+        const { container } = options
+
+        if (container) this.container = container 
+
         this.listen()
         const root = Router.routes.get('/')
 
         if (!root) throw new Error('Router error: No root path specified.')
 
-        this.targetContainer = document.body.querySelector('app-root-test') as Node // do checks
+        // this.container = document.body.querySelector('app-root-test') as Node // do checks
 
         this.currentRouteTuple = root
         this.currentComponent = new (this.currentRouteTuple.component as any)()
-        this.targetContainer.appendChild(this.currentComponent as Node)
-
-        console.log(location)
+        this.container.appendChild(this.currentComponent as Node)
     }
 
     static setRoute(path: string, component: RouteComponent, options: RouteOptions) {
@@ -92,13 +95,13 @@ export default class Router {
             window.history.pushState(null, title || '', href)
     
             // preRemove hook
-            this.targetContainer.removeChild(this.currentComponent as Node)
+            this.container.removeChild(this.currentComponent as Node)
             // postRemove hook
     
             this.currentComponent = new (component as any)()
     
             // preAppend hook
-            this.targetContainer.appendChild(this.currentComponent as Node)
+            this.container.appendChild(this.currentComponent as Node)
             // postAppend hook
         } catch(error) {
             const errorData = JSON.parse(error.message)

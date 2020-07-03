@@ -26,6 +26,10 @@ export default class Router {
     currentComponent: RouteComponent
     targetContainer: Node
 
+
+    /**
+     * TODO: remove initialization steps that prevents from having several instances
+     */
     constructor() {
         this.listen()
         const root = Router.routes.get('/')

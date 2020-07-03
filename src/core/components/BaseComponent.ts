@@ -31,7 +31,7 @@ export default abstract class BaseComponent extends HTMLElement
                 .element.content.cloneNode(true)
         )
 
-        this.manageLinkRoutes()
+        // this.manageLinkRoutes()
     }
 
     parse(html: string) {
@@ -93,41 +93,41 @@ export default abstract class BaseComponent extends HTMLElement
         return (window.getComputedStyle(this) as any)[name]
     }
 
-    manageLinkRoutes() {
-        const links = this.selectAll('a[data-link]')
+    // manageLinkRoutes() {
+    //     const links = this.selectAll('a[data-link]')
 
-        const isSpecialClick = (event: MouseEvent) => (
-            event.ctrlKey
-            || event.metaKey
-            || event.shiftKey
-            || (event.button && event.button === 1)
-        )
+    //     const isSpecialClick = (event: MouseEvent) => (
+    //         event.ctrlKey
+    //         || event.metaKey
+    //         || event.shiftKey
+    //         || (event.button && event.button === 1)
+    //     )
 
-        const handleClick = (event: Event) => {
-            if (isSpecialClick(event as MouseEvent)) return
+    //     const handleClick = (event: Event) => {
+    //         if (isSpecialClick(event as MouseEvent)) return
 
-            const link = event.currentTarget as HTMLAnchorElement
-            const href = link.href
+    //         const link = event.currentTarget as HTMLAnchorElement
+    //         const href = link.href
 
-            if (!href || link.getAttribute('href')!.match(/^#/)) return
+    //         if (!href || link.getAttribute('href')!.match(/^#/)) return
 
-            event.preventDefault()
+    //         event.preventDefault()
             
-            // // solution 1: use unique router instance, which must be instanciated in the core
-            // import { router } from '../routing'
-            // router.to(href)
+    //         // // solution 1: use unique router instance, which must be instanciated in the core
+    //         // import { router } from '../routing'
+    //         // router.to(href)
 
-            // solution 2: use custom events
-            window.dispatchEvent(new CustomEvent('navigate', { detail: {
-                href
-            }}))
+    //         // solution 2: use custom events
+    //         window.dispatchEvent(new CustomEvent('navigate', { detail: {
+    //             href
+    //         }}))
 
-        }
+    //     }
 
-        const addClickListener = (target: Element) => target.addEventListener('click', handleClick)
+    //     const addClickListener = (target: Element) => target.addEventListener('click', handleClick)
 
-        links.forEach(addClickListener)
-    }
+    //     links.forEach(addClickListener)
+    // }
 
     /**
      * TODO: save current tree before render to avoid erasing of computed elements
@@ -140,7 +140,7 @@ export default abstract class BaseComponent extends HTMLElement
         this.root.innerHTML = processedTemplate
 
         this.setRefList()
-        this.manageLinkRoutes()
+        // this.manageLinkRoutes()
         this.dispatchEvent(new CustomEvent('rendered'))
     }
 }

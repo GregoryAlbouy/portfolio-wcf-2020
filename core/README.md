@@ -1,3 +1,3 @@
-## /src/routes
+## /core
 
-All files here will be moved to an npm package.
+This directory is to be moved to a npm package later.

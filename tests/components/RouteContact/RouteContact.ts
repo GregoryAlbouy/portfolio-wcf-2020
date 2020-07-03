@@ -1,6 +1,6 @@
 import HTML_STR from './RouteContact.c.html'
 import CSS_STR from './RouteContact.c.scss'
-import { Component, ShadowComponent, Route } from '../../../core'
+import { Component, ShadowComponent, Route } from '../../../src/core'
 
 @Component({
     tagname: 'route-contact',

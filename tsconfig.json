@@ -4,14 +4,15 @@
     "module": "es6",
     "allowJs": true,
     "outDir": "./dist/",
-    "rootDir": "./src/",
+    "rootDirs": [
+      "./src/",
+      "./tests/"
+    ],
     "strict": true,
-    "strictNullChecks": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node"
   },
-  "exclude": ["./dist"]
 }

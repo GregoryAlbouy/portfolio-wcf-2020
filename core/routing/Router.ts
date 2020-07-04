@@ -1,21 +1,20 @@
 /**
  * TODO:
- * - LOT of clean-up & refacto
  * - Add custom generic animation function support
  * - Add built-in animations
  * - Add support for hooks as a tuple [Function, number] in addition to Promise
+ * - Add 'routes: []' option that overwrites decorator routes
  * - DYNAMIC route support???
  * - option to pass data when appending a component: new SomeComponent(data)
+ * 
+ * FIX:
+ * - new (component as any)()
+ * - proper 404 handling
  */
 
 import type BaseComponent from '../components/BaseComponent'
 
-// export type BaseComponent = BaseComponent
-type RouteMap = Map<string, RoutePage>
-type RoutePage = { component: typeof BaseComponent, title?: string }
-type RouteOptions = {
-    title?: string
-}
+
 type RouterOptions = {
     defaultPath?: string,
     container?: Element,
@@ -23,58 +22,59 @@ type RouterOptions = {
     hooks?: RouterHookMap
     appendBefore?: boolean
 }
-type RouterHook = (element: BaseComponent) => Promise<any>
+type RouterStateParams = {
+    page: RoutePage,
+    nextComponent: BaseComponent
+    title?: string
+}
 type RouterHookMap = {
     beforeRemove?: RouterHook,
     afterRemove?: RouterHook,
     beforeAppend?: RouterHook,
     afterAppend?: RouterHook
 }
+type RouterHook = (element: BaseComponent) => Promise<any>
+
+type RouteMap = Map<string, RoutePage>
+type RoutePage = { component: typeof BaseComponent, title?: string }
+type RouteOptions = {
+    title?: string
+}
 
 export default class Router {
     static routes: RouteMap = new Map()
-    // currentPath: string
     
-    currentPage: RoutePage
-    // currentComponentInstance = null
-    currentComponent: BaseComponent
-
-    container: Element = document.querySelector('app-root') as Element
-
-    // Move in a more adequate class, or get it through another way
-    // (e.g. via selector before any action, OR specify app name upstream)
-    defaultTitle: string = document.querySelector('title')?.textContent || ''
-
-    hooks: RouterHookMap = {}
-
     options = {
         appendBefore: false
     }
 
+    container: Element
+    defaultTitle: string
+
+    currentPage?: RoutePage
+    currentComponent?: BaseComponent
+    hooks: RouterHookMap = {}
+
+
     constructor(options: RouterOptions = {}) {
-
         const { container, hooks, appendBefore } = options
+        const { origin, pathname } = window.location
 
-        if (container) this.container = container 
-        if (appendBefore) this.options.appendBefore = !!appendBefore
+        this.container = container || document.querySelector('app-root') as Element
+        this.defaultTitle = document.querySelector('title')?.textContent || ''
+        this.options.appendBefore = !!appendBefore
 
         this.setHooks(hooks as RouterHookMap)
-
+        this.loadURL(origin + pathname)
         this.listen()
-        const root = Router.routes.get('/')
-
-        if (!root) throw new Error('Router error: No root path specified.')
-
-        this.currentPage = root
-        this.currentComponent = new (this.currentPage.component as any)()
-        this.container.appendChild(this.currentComponent as Node)
-
-        const { origin, pathname } = window.location
-        if (pathname !== '/') this.to(origin + pathname, { skip: true })
     }
 
     static setRoute(path: string, component: typeof BaseComponent, options: RouteOptions) {
         Router.routes.set(path, { component, title: options.title })
+    }
+
+    loadURL(url: string) {
+        this.to(url, { skip: true })
     }
 
     setHooks(hooks: RouterHookMap) {
@@ -96,36 +96,39 @@ export default class Router {
             code: 404,
             pathname
         }))
-        // if (!page) throw new Error(pathname)
 
         return page
     }
 
     // TODO: change href to path?
-    async to(href: string, options: { skip?: boolean, appendBefore?: boolean } = {}) {
+    async to(href: string, options: { skip?: boolean } = {}) {
         try {
             const page = this.getPageFromHrefValue(href)
-            const { skip, appendBefore } = options
+            const { skip } = options
     
-            this.performDOM(page, { skip, appendBefore })
+            this.performDOM(page, { skip })
             window.history.pushState(null, page.title || '', href)
 
         } catch(error) {
-            console.warn(error)
+            // console.warn(error)
             const errorData = JSON.parse(error.message)
             if (errorData.code === 404) this.handle404(errorData.pathname)
             // console.warn(errorData)
         }
     }
 
-    async performDOM(page: RoutePage, options: { skip?: boolean, appendBefore?: boolean } = {}) {
+    /**
+     * TODO: use decorators for hooks
+     */
+    async performDOM(page: RoutePage, options: { skip?: boolean } = {}) {
         const { beforeRemove, afterRemove, beforeAppend, afterAppend } = this.hooks
         const { component, title } = page
-        const { skip, appendBefore } = options
+        const { skip } = options
         const prevComponent = this.currentComponent
         const nextComponent = new (component as any)()
 
         const performRemove = async () => {
+            if (!prevComponent) return
             if (beforeRemove && !skip) await beforeRemove(prevComponent)
             this.container.removeChild(prevComponent as Node)
             if (afterRemove && !skip) await afterRemove(prevComponent)
@@ -144,17 +147,17 @@ export default class Router {
             for (const action of actionStack) await action()
         }
 
-        this.setPageTitle(title)
-        this.currentPage = page
-        this.currentComponent = nextComponent
+        this.setCurrentState({ page, nextComponent, title })
 
         await performActions()
 
     }
 
-    // setCurrentComponent(component: RouteComponent) {
-    //     this.currentComponent = new (component as any)()
-    // }
+    setCurrentState({ page, nextComponent, title }: RouterStateParams) {
+        this.setPageTitle(title)
+        this.currentPage = page
+        this.currentComponent = nextComponent
+    }
 
     setPageTitle(value?: string) {
         const titleElement = document.querySelector('title')
@@ -165,24 +168,4 @@ export default class Router {
     handle404(requestedPath?: string) {
         this.to(window.location.origin + '/404')
     }
-}
-
-/**
- * Hook model n.1
- * { hooks: { beforeAppend: hook1 } }
- */
-const hook = (element: any) => new Promise(resolve => {
-    const animateForOneSec = (el: any) => new Promise(resolve => setTimeout(resolve, 1000))
-    
-    animateForOneSec(element).then(resolve)
-})
-
-/**
- * Hook model n.2
- * { hooks: { beforeAppend: [hook2, 1000] } }
- */
-const hook2 = (element: any) => {
-    const animateForOneSec = (el: any) => {}
-
-    animateForOneSec(element)
 }

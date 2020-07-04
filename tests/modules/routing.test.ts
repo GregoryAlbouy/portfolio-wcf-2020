@@ -1,6 +1,6 @@
 import { Router } from '../../core'
-import { RouteHome } from '../components/test-components'
 import { AppRootTest } from '../components/test-components'
+import { pause } from '../../src/shared/utils'
 import EBuilder from 'ebuilder-js'
 
 export default class RoutingTest {
@@ -8,9 +8,6 @@ export default class RoutingTest {
         console.log('------------- ROUTING TEST ------------')
 
         const appRootTest = new AppRootTest()
-
-        document.body.appendChild(appRootTest)
-
         const router = new Router({
             container: appRootTest,
             // appendBefore: true,
@@ -20,6 +17,9 @@ export default class RoutingTest {
                 afterAppend: this.afterAppendAnimation
             },
         })
+
+        document.body.appendChild(appRootTest)
+
     }
 
     beforeRemoveAnimation(element: any) {
@@ -34,7 +34,9 @@ export default class RoutingTest {
             transitionTimingFunction: 'cubic-bezier(.5, -1.5, 1, 1)'
         })
 
-        return new Promise(resolve => setTimeout(resolve, duration))
+        console.log('beforeRemove hook')
+
+        return pause(duration)
     }
 
     beforeAppendAnimation(element: any) {
@@ -48,7 +50,9 @@ export default class RoutingTest {
             transitionDuration: `${duration}ms`
         })
 
-        return new Promise(resolve => resolve())
+        console.log('beforeAppend hook')
+
+        return Promise.resolve()
     }
 
     afterAppendAnimation(element: any) {
@@ -61,6 +65,8 @@ export default class RoutingTest {
             }
         })
 
-        return new Promise(resolve => setTimeout(resolve, duration))
+        console.log('afterAppend hook')
+
+        return pause(duration)
     }
 }

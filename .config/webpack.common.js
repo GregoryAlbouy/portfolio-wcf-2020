@@ -21,7 +21,8 @@ module.exports = {
             inject: "body"
         }),
         new MiniCssExtractPlugin({
-            filename: `assets/style/style.${hash}.css`
+            filename: `style.${hash}.css`,
+
         }),
         new CleanWebpackPlugin()
     ],
@@ -51,17 +52,6 @@ module.exports = {
                     },
                 }
             },
-            // {
-            //     test: /\.html$/,
-            //     exclude: /\.c\.html?$/,
-            //     use: {
-            //         loader: 'html-loader',
-            //         query: {
-            //             // interpolate: 'require',
-            //             attributes: ['href']
-            //         }
-            //     }
-            // },
             {
                 // general .scss (.c.scss excluded): to css file
                 test: /(?<!\.c)\.s[ac]ss$/i,
@@ -69,7 +59,7 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            publicPath: '../../'
+                            publicPath: '/assets/style'
                         },
                     },
                     'css-loader',

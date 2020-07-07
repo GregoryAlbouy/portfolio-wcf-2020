@@ -1,42 +1,93 @@
+@use '../../assets/style/utils/' as u;
+
+@include u.box-sizing;
+
 main-section {
     display: block;
-    // min-height: 60rem;
+    min-height: 50rem;
     padding: 4rem 0;
 
-    & > h2 {
+    > h2 {
         position: relative;
         width: var(--content-width);
-        // margin: auto;
-        margin-left: 10%;;
-        margin-bottom: 4rem;
-        font-family: 'Big Shoulders Display';
+        margin: 0 auto 4rem;
+        font-family: 'Big Shoulders Display', sans-serif;
         color: rgba(255, 255, 255, .1);
         font-size: 8rem;
         text-transform: uppercase;
         box-sizing: border-box;
+        transition: opacity, transform;
+        transition-duration: 400ms;
+        transition-timing-function: ease;
 
         &::before {
             content: ".";
-            display: block;
-            position: absolute;
-            right: 100%;
             color: inherit;
             font-size: inherit;
+        }
+    }
+
+    > .content {
+        width: var(--content-width);
+        margin: auto;
+        filter: blur(0px);
+        transition: filter 400ms 0ms, opacity 200ms 0ms;
+
+        > :not(:last-child) {
+            margin-bottom: 2rem;
         }
     }
 }
 
 main-section.dark {
-    background: rgba(0, 0, 0, .2);
+    background: var(--overlay-4);
 
-    h2 {
+    > h2 {
         color: rgba(200, 200, 255, .1);
+    }
+}
+
+.in main-section {
+
+    > h2 {
+        opacity: 0;
+        transform: translateX(-10rem) skewX(60deg);
+    }
+
+    > .content {
+        opacity: 0;
+        filter: blur(4rem);
+    }
+}
+
+.out main-section {
+    > h2 {
+        opacity: 0;
+        transform: translateX(100%) skewX(20deg);
+        transition-duration: 800ms, 400ms;
+    }
+
+    > .content {
+        filter: blur(4rem);
+        opacity: 0;
+        transition: filter 400ms 400ms, opacity 200ms 600ms,
+    }
+}
+
+@media (max-width: 960px) {
+    main-section {
+        width: 100%;
+        padding: 4rem 2rem;
     }
 }
 
 @media (max-width: 640px) {
     main-section h2 {
         width: 100%;
-        margin-left: 4rem;
+        // margin-left: 4rem;
+    }
+
+    main-section .content {
+        width: 100%;
     }
 }

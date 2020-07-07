@@ -3,6 +3,7 @@ import AppRoot from './AppRoot/AppRoot'
 import MainHeader from './MainHeader/MainHeader'
 import MainFooter from './MainFooter/MainFooter'
 import MainSection from './MainSection/MainSection'
+import MainNav from './MainNav/MainNav'
 import ProjectCard from './ProjectCard/ProjectCard'
 import ProjectList from './ProjectList/ProjectList'
 import AsideInfo from './AsideInfo/AsideInfo'
@@ -12,6 +13,8 @@ import ContactBox from './ContactBox/ContactBox'
 import PageAbout from './PageAbout/PageAbout'
 import PageProjects from './PageProjects/PageProjects'
 import PageContact from './PageContact/PageContact'
+import PageAll from './PageAll/PageAll'
+import PageNotFound from './PageNotFound/PageNotFound'
 
 export {
     AppRoot,
@@ -19,6 +22,7 @@ export {
     MainHeader,
     MainFooter,
     MainSection,
+    MainNav,
     ProjectCard,
     ProjectList,
     AsideInfo,
@@ -27,5 +31,7 @@ export {
     ContactBox,
     PageAbout,
     PageProjects,
-    PageContact
+    PageContact,
+    PageAll,
+    PageNotFound
 }

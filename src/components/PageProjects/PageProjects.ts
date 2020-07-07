@@ -6,5 +6,5 @@ import { Component, LightComponent, Route } from '../../../core'
     tagname: 'page-projects',
     template: { html: HTML_STR, css: CSS_STR }
 })
-@Route('/projects')
+@Route('/projects', { title: 'Projects | Grégory Albouy', shortcut: 'p' })
 export default class PageProjects extends LightComponent {}

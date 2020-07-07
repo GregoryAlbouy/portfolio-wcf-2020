@@ -1,18 +1,23 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "es6",
+    "module": "esnext",
     "allowJs": true,
     "outDir": "./dist/",
     "rootDirs": [
       "./src/",
-      "./tests/"
+      "./tests/",
+      // "./core/"
     ],
     "strict": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    // "baseUrl": ".",
+    // "paths": {
+    //   "*": ["./core/*"]
+    // }
   },
 }

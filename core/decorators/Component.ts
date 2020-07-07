@@ -4,7 +4,7 @@ interface ComponentOptions {
     tagname: string
     template?: TemplateObject
     _extends?: string
-    attributes?: StringObject
+    attributes?: Record<string, string>
     listeners?: EventTuple[]
 }
 
@@ -18,10 +18,6 @@ type DefineOptions = [
  * Component class decorator: automatically generates the full html string template
  * (including stylesheet) from the separate files, add the optionals attributes and
  * listeners then define the component.
- * 
- * TODO: move in a separate file
- * TODO: add attributeChangedCallback() rewriting
- * TODO: RE-FAC-TO!!!
  */
 export default function Component(options: ComponentOptions) {
     return (target: Function) => {

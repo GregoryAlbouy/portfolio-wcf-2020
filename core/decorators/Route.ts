@@ -4,10 +4,7 @@ import { Router } from '../routing'
 
 interface RouteOptions {
     title?: string
-    beforeAppend?: Function
-    afterAppend?: Function
-    beforeRemove?: Function
-    afterRemove?: Function
+    shortcut?: string
 }
 
 /**

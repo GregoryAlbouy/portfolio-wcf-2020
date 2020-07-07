@@ -19,6 +19,7 @@ export default class RouteLink extends LightComponent {
         this.props.content = this.htmlContent
         this.props.to = this.getAttribute('to') || ''
         this.$a = this.select('a') as HTMLAnchorElement
+        this.listen()
     }
 
     static get observedAttributes() {
@@ -30,6 +31,15 @@ export default class RouteLink extends LightComponent {
         if (name === 'to') {
             this.setTo(newValue)
         }
+    }
+
+    listen() {
+        window.addEventListener('pagechange', (event: any) => {
+            const { pathname } = event.detail
+            pathname === this.props.to
+                ? this.setAttribute('is-active', '')
+                : this.removeAttribute('is-active')
+        })
     }
 
     setTo(value: string) {

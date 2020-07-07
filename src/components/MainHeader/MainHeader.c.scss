@@ -1,7 +1,14 @@
+@use '../../assets/style/utils' as u;
+
+@include u.link;
+
+a {
+    text-decoration: none;
+}
+
 :host {
     display: block;
-    width: var(--content-width);
-    padding: 4rem 0;
+    padding: 4rem;
     margin: auto;
 
     & > *:not(:last-child) {
@@ -9,30 +16,56 @@
     }
 }
 
+header {
+    position: relative;
+}
+
 h1 {
-    margin: 0 0 4rem 0;
-    font-family: 'Big Shoulders Display';
+    margin: 0;
+    font-family: 'Big Shoulders Display', sans-serif;
     font-size: 6rem;
     text-transform: uppercase;
 
-    > * {
+    span {
         display: block;
         margin-bottom: 1rem;
     }
 }
 
 .subtitle {
+    margin: 0;
     color: rgba(255, 255, 255, .4);
     font-size: 3rem;
 }
 
-.content {
-    font-size: 1.6rem;
+.social {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    a {
+        display: block;
+    }
+
+    svg {
+        width: 4rem;
+        fill: rgba(255, 255, 255, .1);
+        transition: 400ms;
+
+        &:hover {
+            fill: var(--main-color);
+        }
+    }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 640px) {
     :host {
-        width: 100%;
-        padding: 4rem;
+        padding: 4rem 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social {
+        display: none;
     }
 }

@@ -17,6 +17,7 @@ import type BaseComponent from '../components/BaseComponent'
 
 type RouterOptions = {
     defaultPath?: string,
+    notFoundPath? : string,
     container?: Element,
     listen?: boolean
     hooks?: RouterHookMap
@@ -36,20 +37,28 @@ type RouterHookMap = {
 type RouterHook = (element: BaseComponent) => Promise<any>
 
 type RouteMap = Map<string, RoutePage>
-type RoutePage = { component: typeof BaseComponent, title?: string }
+type RoutePage = {
+    component: typeof BaseComponent
+    pathname: string
+    title?: string
+    shortcut?: string
+}
 type RouteOptions = {
     title?: string
+    shortcut?: string
 }
 
 export default class Router {
     static routes: RouteMap = new Map()
     
     options = {
-        appendBefore: false
+        appendBefore: false,
+        notFoundPath: ''
     }
 
     container: Element
     defaultTitle: string
+    baseURL: string
 
     currentPage?: RoutePage
     currentComponent?: BaseComponent
@@ -57,41 +66,62 @@ export default class Router {
 
 
     constructor(options: RouterOptions = {}) {
-        const { container, hooks, appendBefore } = options
+        const { container, hooks, appendBefore, notFoundPath } = options
         const { origin, pathname } = window.location
 
         this.container = container || document.querySelector('app-root') as Element
         this.defaultTitle = document.querySelector('title')?.textContent || ''
         this.options.appendBefore = !!appendBefore
+        this.options.notFoundPath = notFoundPath || ''
+        this.baseURL = origin
 
         this.setHooks(hooks as RouterHookMap)
-        this.loadURL(origin + pathname)
+        this.handleURL(this.baseURL + pathname)
         this.listen()
     }
 
     static setRoute(path: string, component: typeof BaseComponent, options: RouteOptions) {
-        Router.routes.set(path, { component, title: options.title })
-    }
-
-    loadURL(url: string) {
-        this.to(url, { skip: true })
+        Router.routes.set(
+            path,
+            {
+                component,
+                pathname: path,
+                title: options.title,
+                shortcut: options.shortcut
+            })
     }
 
     setHooks(hooks: RouterHookMap) {
         Object.assign(this.hooks, hooks)
     }
 
+    handleURL(url: string) {
+        this.to(url, { skip: true })
+    }
+
     listen() {
+        // Navigation through <router-link>
         window.addEventListener('navigate', (event: any) => {
             const { href } = event.detail
             this.to(href)
         })
+
+        // Key shortcut specified in @Route decorator arguments
+        window.addEventListener('keydown', (event: KeyboardEvent) => {
+            Router.routes.forEach((route, path) => {
+                if (route.shortcut === event.key) this.to(this.baseURL + path)
+            })
+        })
+
+        // window.addEventListener('popstate', (event: any) => {
+        //     console.log('POPSTATE TRIGGERED', event)
+        // })
     }
 
     getPageFromHrefValue(href: string) {
         const { pathname } = new URL(href)
         const page = Router.routes.get(pathname)
-        
+
         if (!page) throw new Error(JSON.stringify({
             code: 404,
             pathname
@@ -100,14 +130,15 @@ export default class Router {
         return page
     }
 
-    // TODO: change href to path?
     async to(href: string, options: { skip?: boolean } = {}) {
         try {
             const page = this.getPageFromHrefValue(href)
             const { skip } = options
-    
+
+            if (page === this.currentPage) return
+            
             this.performDOM(page, { skip })
-            window.history.pushState(null, page.title || '', href)
+            this.performHistory(page, href)
 
         } catch(error) {
             // console.warn(error)
@@ -141,16 +172,21 @@ export default class Router {
         }
 
         const performActions = async () => {
-            const actions = [performRemove, performAppend]
-            const actionStack = this.options.appendBefore ? actions.reverse() : actions
+            const actions = this.options.appendBefore
+                ? [performAppend, performRemove]
+                : [performRemove, performAppend]
 
-            for (const action of actionStack) await action()
+            for (const action of actions) await action()
         }
 
         this.setCurrentState({ page, nextComponent, title })
 
         await performActions()
+    }
 
+    performHistory(page: RoutePage, href: string) {
+        window.history.pushState(null, page.title || '', href)
+        window.dispatchEvent(new CustomEvent('pagechange', { detail: page }))
     }
 
     setCurrentState({ page, nextComponent, title }: RouterStateParams) {
@@ -166,6 +202,8 @@ export default class Router {
     }
 
     handle404(requestedPath?: string) {
-        this.to(window.location.origin + '/404')
+        if (!this.options.notFoundPath) return
+
+        this.to(window.location.origin + this.options.notFoundPath)
     }
 }

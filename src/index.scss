@@ -1,18 +1,42 @@
 @use './assets/style/base';
 @use './assets/style/utils' as u;
 
+@include u.box-sizing;
+
 :root {
+    --width-xs: 30rem;
+    --width-s: 60rem;
+    --width-m: 90rem;
+    --width-l: 120rem;
+
+    --content-width: var(--width-l);
+
     --page-background-color: #181822;
+    --background-color-dark: #0E0E15;
     --text-color: #CCC;
     --main-color: #0FE;
-    --content-width: 120rem;
+    
+    @for $i from 1 through 9 {
+        --overlay-#{$i}: rgba(0, 0, 0, #{$i / 10});
+    }
+
     font-size: 10px;
+
+    // // TODO: light theme
+    // .light {
+    //     --page-background-color: #CCC;
+    //     --text-color: #181822;
+
+    //     @for $i from 1 through 9 {
+    //         --overlay-#{$i}: rgba(255, 255, 255, #{$i / 10});
+    //     }
+    // }
 }
 
 body {
-    background: #181822;
+    background: var(--page-background-color);
     color: var(--text-color);
-    font-family: 'Raleway';
+    font-family: 'Raleway', sans-serif;
     font-weight: 200;
 }
 
@@ -20,8 +44,32 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
-a, a:visited {
-    color: inherit;
+#routing {
+    position: relative;
+    overflow: hidden;
+}
+
+.color-container {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 100000;
+    width: 3rem;
+    height: 3rem;
+    box-shadow: 0 0 1rem var(--overlay-4);
+    border: 2px solid #EEE;
+    border-radius: 50%;
+    background: var(--main-color);
+    color: transparent;
+    cursor: pointer;
+    
+    input[type=color] {
+        display: block;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
 }
 
 .full-height {
@@ -31,19 +79,19 @@ a, a:visited {
 
 @media (max-width: 1600px) {
     :root {
-        --content-width: 90rem;
+        --content-width: var(--width-m);
     }
 }
 
 @media (max-width: 960px) {
     :root {
-        --content-width: 60rem;
+        --content-width: var(--width-s);
     }
 }
 
 @media (max-width: 640px) {
     :root {
-        --content-width: 30rem;
+        --content-width: var(--width-xs);
     }
 }
 

@@ -1,23 +1,16 @@
-// type EventTuple = [
-//     string,
-//     (this: Document, event: DocumentEventMap[]) => any,
-//     (boolean | AddEventListenerOptions)?
-// ]
-
-// TEMP
-type EventTuple = [
-    string,
-    (this: any, event: any) => any,
-    (boolean | AddEventListenerOptions)?
-]
-type StringObject = { [key: string]: string }
-type TemplateObject = { html: string, css?: string }
-type ComponentProps = { [key: string]: any }
-type ComponentRefs = { [key: string]: Element }
-type MessageData = {
+declare const __API_BASE_URL__: string
+declare type MessageData = {
     email: string,
     subject: string,
     message: string
 }
 
-declare var __API_BASE_URL__: string
+// TODO: move to /core
+declare type ComponentProps = Record<string, any>
+declare type ComponentRefs = Record<string, Element>
+declare type TemplateObject = { html: string, css?: string }
+declare type EventTuple = [
+    string,
+    (this: any, event: any) => any,
+    (boolean | AddEventListenerOptions)?
+]

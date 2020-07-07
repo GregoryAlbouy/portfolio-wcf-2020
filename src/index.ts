@@ -64,6 +64,6 @@ class App {
 }
 
 export const app = new App()
-    // .boot()
-    .quickBoot()
+    .boot()
+    // .quickBoot()
     .initializeRouter()

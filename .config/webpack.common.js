@@ -5,6 +5,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
+const rules = require('./webpack.rules.js')
+
 dotenv.config({ path: './.config/.env' })
 const mode = process.env.NODE_ENV
 const hash = mode === 'production' ? '[contenthash]' : '[hash]'
@@ -21,111 +23,13 @@ module.exports = {
             inject: "body"
         }),
         new MiniCssExtractPlugin({
-            filename: `style.${hash}.css`,
+            filename: `assets/style/style.${hash}.css`,
 
         }),
         new CleanWebpackPlugin()
     ],
     module: {
-        rules: [
-            {
-                test: /\.tsx?$/i,
-                exclude: /node_modules/,
-                use: 'ts-loader'
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        configFile: path.resolve(__dirname, 'babel.config.json') 
-                    }
-                }
-            },
-            {
-                test: /\.c\.html?$/i,
-                use: {
-                    loader: 'html-loader',
-                    options: {
-                        esModule: true
-                    },
-                }
-            },
-            {
-                // general .scss (.c.scss excluded): to css file
-                test: /(?<!\.c)\.s[ac]ss$/i,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: '/assets/style'
-                        },
-                    },
-                    'css-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            config: {
-                                path: path.resolve(__dirname)
-                            }
-                        }
-                    },
-                    'resolve-url-loader',
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: true,
-                        },
-                    }
-                ]
-            },
-            {
-                // .c.scss file: load as string
-                test: /\.c\.s[ac]ss$/i,
-                use: [
-                    'to-string-loader',
-                    'css-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            config: {
-                                path: path.resolve(__dirname)
-                            }
-                        }
-                    },
-                    'resolve-url-loader',
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: true,
-                        },
-                    }
-                ]
-            },
-            {
-                test: /\.(jpe?g|png|gif|svg|ico)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            outputPath: 'assets/images/'
-                        }
-                    },
-                ]
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            outputPath: 'assets/fonts/'
-                        }
-                    },
-                ]
-            },
-        ]
+        rules
     },
     resolve: {
         extensions: [ '.tsx', '.ts', '.js' ]

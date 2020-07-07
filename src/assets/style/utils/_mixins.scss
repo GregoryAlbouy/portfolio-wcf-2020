@@ -7,7 +7,7 @@
 @mixin link {
     a,
     a:visited {
-        color: rgba(0, 255, 237, .8);
+        color: inherit;
         font-size: inherit;
         text-transform: inherit;
     }

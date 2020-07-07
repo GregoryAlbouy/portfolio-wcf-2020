@@ -2,12 +2,10 @@ import HTML_STR from './ProjectList.c.html'
 import CSS_STR from './ProjectList.c.scss'
 import EBuilder from 'ebuilder-js'
 import Check from '../../shared/Check'
-import {
-    Component,
-    LightComponent,
-    ShadowComponent,
-    ProjectCard
-} from '../components'
+import { Component, ShadowComponent } from '../../../core'
+import { ProjectCard } from '../components'
+import { app } from '../../'
+import { pause } from '../../shared/utils'
 
 
 @Component({
@@ -16,19 +14,33 @@ import {
 })
 export default class ProjectList extends ShadowComponent
 {
+    static loadedData = []
+
     props: ComponentProps = {
         projects: [],
         currentDisplay: []
     }
 
-    connectedCallback() {
-        window.addEventListener('projectDataLoad', this.handleDataLoad.bind(this))
+    async connectedCallback() {
+        // window.addEventListener('projectDataLoad', this.handleDataLoad.bind(this))
+        // if (ProjectList.loadedData.length)
+        //     window.dispatchEvent(new CustomEvent('projectDataLoad', { detail: ProjectList.loadedData }))
+        const projectData = await app.projectData
+        // try {
+            this.handleDataLoad({ detail: projectData })
+        // } catch {
+        //     await pause(50)
+        //     this.connectedCallback()
+        //     console.log('iteration')
+        // }
     }
 
     handleDataLoad(event: any): void {
         const data = event.detail.filter((project: any) => !project.isDisabled)
         const tagList = data.reduce((acc: any, curr: any) => [...acc, ...curr.tags], data[0].tags)
         const tagSet: Set<string> = new Set(tagList)
+
+        ProjectList.loadedData = data
 
         this.setProps({
             projects: data,

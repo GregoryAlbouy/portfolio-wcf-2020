@@ -6,11 +6,15 @@ const PORT = 9999
 const MODE = 'development'
 const API_BASE_URL =  process.env.LOCAL_API_BASE_URL
 
-console.table({
-    PORT,
-    MODE,
-    API_BASE_URL
-})
+// Prevents from showing this config info when using test config
+// (which imports this file)
+if (require.main === module) {
+    console.table({
+        PORT,
+        MODE,
+        API_BASE_URL
+    })
+}
 
 module.exports = webpackMerge(commonConfig, {
     mode: MODE,
@@ -18,6 +22,7 @@ module.exports = webpackMerge(commonConfig, {
     devServer: {
         contentBase: './dist',
         watchContentBase: true,
+        historyApiFallback: true,
         hot: true,
         port: PORT,
     },

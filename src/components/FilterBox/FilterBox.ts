@@ -1,10 +1,7 @@
 import HTML_STR from './FilterBox.c.html'
 import CSS_STR from './FilterBox.c.scss'
-import {
-    Component,
-    ShadowComponent,
-    TagButton
-} from '../components'
+import { Component, ShadowComponent } from '../../../core'
+import { TagButton } from '../components'
 import EBuilder from 'ebuilder-js'
 
 interface FilterBoxProps {
@@ -39,7 +36,7 @@ export default class FilterBox extends ShadowComponent {
     }
 
     handleTagButtonClick(event: MouseEvent) {
-        const tagButton = event.currentTarget as TagButton
+        const tagButton = event.currentTarget as unknown as TagButton // fix this
         const value = tagButton.props.name
 
         tagButton.toggleIsActive()

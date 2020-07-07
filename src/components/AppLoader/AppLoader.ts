@@ -1,6 +1,6 @@
 import HTML_STR from './AppLoader.c.html'
 import CSS_STR from './AppLoader.c.scss'
-import { Component, ShadowComponent } from '../components'
+import { Component, ShadowComponent } from '../../../core'
 import LoaderTask from './LoaderTask'
 import EBuilder from 'ebuilder-js'
 

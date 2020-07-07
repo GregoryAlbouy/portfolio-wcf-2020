@@ -1,0 +1,94 @@
+@use '../../assets/style/utils' as u;
+
+@include u.link;
+
+$height: 5rem;
+
+:host {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0 4rem;
+    background: var(--page-background-color);
+    font-size: 1.4rem;
+
+    nav {
+        flex: 1 0 50%;
+        display: flex;
+        max-width: 40rem;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background: var(--overlay-2);
+        overflow: hidden;
+    }
+
+    route-link {
+        display: block;
+        flex: 1 1 auto;
+        min-width: 8rem;
+        height: $height;
+        text-align: center;
+        cursor: pointer;
+        background: linear-gradient(to top, var(--background-color-dark), var(--background-color-dark))
+                    0rem #{$height}
+                    / 100% 100%
+                    no-repeat;
+        transition: background-position 200ms;
+
+        &[is-active],
+        &:hover:not([is-active]) {
+            background-position: 0rem 0rem;
+        }
+    }
+
+    route-link a {
+        color: var(--text-color);
+        line-height: $height;
+        text-decoration: none;
+    }
+
+    route-link[is-active] a {
+        color: var(--main-color) !important;
+    }
+}
+
+:host(.bottom) {
+    position: fixed;
+    top: initial;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 0 2rem var(--overlay-4);
+
+    nav {
+        border-radius: 0;
+        background: none;
+    }
+
+    route-link {
+        height: 6rem;
+        background: none;
+        transition: background 200ms;
+
+        &[is-active],
+        &:hover {
+            background: var(--background-color-dark);
+        }
+    }
+
+    route-link a {
+        line-height: 6rem;
+    }
+}
+
+@media (max-width: 640px) {
+    :host {
+        padding: 0;
+
+        nav {
+            max-width: none;
+            border-radius: 0;
+        }
+    }
+}

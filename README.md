@@ -6,11 +6,7 @@ I kept it dead simple since the latter is already a huge piece of work. I just n
 ## Features
 
 - 100% Webcomponents
+- Handcrafted routing logics
 - Fetch Node.js API deployed on Google App Engine (repo coming!)
 - Nice project filters
 - Hand-crafted contact form
-
-## Coming soon
-
-- Presentation + CV
-- Social links

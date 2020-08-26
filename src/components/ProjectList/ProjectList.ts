@@ -36,7 +36,7 @@ export default class ProjectList extends ShadowComponent
     }
 
     handleDataLoad(event: any): void {
-        const data = event.detail.filter((project: any) => !project.isDisabled)
+        const data = event.detail.filter((project: any) => !project['is_hidden'])
         const tagList = data.reduce((acc: any, curr: any) => [...acc, ...curr.tags], data[0].tags)
         const tagSet: Set<string> = new Set(tagList)
 

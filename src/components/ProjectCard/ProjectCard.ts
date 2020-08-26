@@ -29,10 +29,10 @@ export default class ProjectCard extends ShadowComponent
         const data = Object.create(null)
 
         Object.keys(rawData).forEach((key) => {
-            if (key === '_id') data['id'] = rawData['_id']
             if (!(key in this.props)) return
             data[key] = rawData[key]
         })
+        data.addedOn = rawData["added_on"]
 
         return data
     }

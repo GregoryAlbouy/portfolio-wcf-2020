@@ -58,6 +58,33 @@ h1 {
     }
 }
 
+@keyframes sitetitle {
+    100% {
+
+    }
+}
+
+#site-title {
+    width: 325px;
+
+    text {
+        font-size: 6rem;
+        fill: var(--text-color);
+        font-family: 'Big Shoulders Display', sans-serif;
+        font-weight: 700;
+        stroke: var(--text-color);
+        stroke-dasharray: 0 1;
+        // vector-effect: non-scaling-stroke;
+        transition: fill .4s,
+                    stroke-dasharray 2s .4s linear;
+    }
+    
+    text:hover {
+        fill: transparent;
+        stroke-dasharray: 100%;
+    }
+}
+
 @media (max-width: 640px) {
     :host {
         padding: 4rem 2rem;

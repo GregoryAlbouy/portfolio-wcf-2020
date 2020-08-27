@@ -7,6 +7,12 @@ I kept it dead simple since the latter is already a huge piece of work. I just n
 
 - 100% Webcomponents
 - Handcrafted routing logics
-- Fetch Node.js API deployed on Google App Engine (repo coming!)
-- Nice project filters
-- Hand-crafted contact form
+- Fetches Go + SQL API deployed on Google App Engine (previously Node.js + MongoDB)
+- Project filters logic + animation
+- Functional contact form
+
+## See also
+
+- Website: https://gregoryalbouy.com
+- Back-end repo in Go + SQL: https://github.com/gregoryalbouy/portfolio-server-go
+- Webcomponents framework: https://github.com/gregoryalbouy/webcomponents-framework

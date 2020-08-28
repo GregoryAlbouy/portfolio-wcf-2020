@@ -24,6 +24,7 @@ export default class ContactBox extends ShadowComponent {
 
         try {
             const response = await postMessage(messageData)
+            console.log(response)
 
             if (response.status !== 201) throw new Error('Invalid message')
             this.handleSuccess(response)

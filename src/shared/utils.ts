@@ -14,14 +14,15 @@ export const postMessage = async (messageData: MessageData) => {
         const response = await fetch(__API_BASE_URL__ + '/contact/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json;charset=utf-8' },
-            body: JSON.stringify(messageData)
+            body: JSON.stringify(messageData),
         })
 
         if (!response.ok && response.status === 400) throw new Error(response.statusText)
 
-        return response.json()
+        return { status: response.status }
     } catch(error) {
-        // oops, todo
+        console.warn(error)
+        return { status: 400 }
     }
 }
 

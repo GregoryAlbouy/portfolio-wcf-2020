@@ -6,5 +6,5 @@ import { Component, LightComponent, Route } from '../../../core'
     tagname: 'page-contact',
     template: { html: HTML_STR, css: CSS_STR }
 })
-@Route('/contact', { title: 'Contact | Grégory Albouy', shortcut: 'c' })
+@Route('/contact', { title: 'Contact | Grégory Albouy' })
 export default class PageContact extends LightComponent {}

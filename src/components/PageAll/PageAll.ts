@@ -6,5 +6,5 @@ import { Component, LightComponent, Route } from '../../../core'
     tagname: 'page-all',
     template: { html: HTML_STR, css: CSS_STR }
 })
-@Route('/all', { shortcut: 'h' })
+@Route('/all')
 export default class PageAll extends LightComponent {}

@@ -44,14 +44,28 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
+p > * {
+    line-height: 120%;
+}
+
+strong {
+    font-weight: 700;
+}
+
 #routing {
     position: relative;
     overflow: hidden;
 }
 
+.link--ext {
+    color: var(--main-color);
+    text-decoration: underline;
+}
+
 .full-height {
     min-height: 100vh;
 }
+
 
 
 @media (max-width: 1600px) {

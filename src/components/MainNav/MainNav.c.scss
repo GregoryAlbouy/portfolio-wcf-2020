@@ -5,7 +5,8 @@
 $height: 5rem;
 
 :host {
-    display: block;
+    display: flex;
+    justify-content: flex-start;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -82,6 +83,25 @@ $height: 5rem;
     }
 }
 
+.social {
+    display: flex;
+
+    a {
+        display: block;
+        margin-left: 2rem;
+    }
+
+    svg {
+        width: 4rem;
+        fill: rgba(255, 255, 255, .2);
+        transition: 400ms;
+
+        &:hover {
+            fill: var(--main-color);
+        }
+    }
+}
+
 @media (max-width: 640px) {
     :host {
         padding: 0;
@@ -90,5 +110,11 @@ $height: 5rem;
             max-width: none;
             border-radius: 0;
         }
+    }
+}
+
+@media (max-width: 480px) {
+    .social {
+        display: none;
     }
 }

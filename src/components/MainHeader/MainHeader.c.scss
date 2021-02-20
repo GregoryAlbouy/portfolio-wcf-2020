@@ -38,26 +38,6 @@ h1 {
     font-size: 3rem;
 }
 
-.social {
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    a {
-        display: block;
-    }
-
-    svg {
-        width: 4rem;
-        fill: rgba(255, 255, 255, .1);
-        transition: 400ms;
-
-        &:hover {
-            fill: var(--main-color);
-        }
-    }
-}
-
 @keyframes sitetitle {
     100% {
 
@@ -88,11 +68,5 @@ h1 {
 @media (max-width: 640px) {
     :host {
         padding: 4rem 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .social {
-        display: none;
     }
 }

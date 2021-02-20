@@ -18,7 +18,6 @@ if (require.main === module) {
 
 module.exports = webpackMerge(commonConfig, {
     mode: MODE,
-    devtool: 'source-map',
     devServer: {
         contentBase: './dist',
         watchContentBase: true,

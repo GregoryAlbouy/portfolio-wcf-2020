@@ -12,6 +12,8 @@ const mode = process.env.NODE_ENV
 const hash = mode === 'production' ? '[contenthash]' : '[hash]'
 
 module.exports = {
+    devtool: 'source-map',
+    node: false, // CSP: avoids Webpack's g = g || new Function('return this')
     entry: path.resolve(__dirname, '../src/index.ts'),
     output: {
         path: path.resolve(__dirname, '../dist'),
